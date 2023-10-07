@@ -1,12 +1,11 @@
-package com.example.user_service.service;
-
+package com.example.user_service.DataImpliments;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
 @RequiredArgsConstructor
-public class UserService {
+@Slf4j
+public class RoleIMPL {
 }
