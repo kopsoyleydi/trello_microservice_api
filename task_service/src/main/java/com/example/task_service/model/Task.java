@@ -6,7 +6,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
-import java.time.LocalTime;
 
 @Entity
 @Data
@@ -15,6 +14,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,13 +33,15 @@ public class Task {
     @Column(name = "header")
     String header;
 
-    @Column(name = "text")
-    String text;
+    @Column(name = "description")
+    String description;
 
     @Column(name = "picture")
     String linkToAWSCloud;
 
-    @Column(name = "in_tasks")
-    @ManyToOne
-    INTasks inTasks;
+    @Column(name = "comments")
+    String comments;
+
+    @Column(name = "check")
+    Boolean check;
 }

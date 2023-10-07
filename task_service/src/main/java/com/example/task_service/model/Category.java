@@ -22,4 +22,6 @@ public class Category {
     @Column(name = "category_description")
     String categoryDescription;
 
+
+
 }
