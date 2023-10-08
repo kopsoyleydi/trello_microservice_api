@@ -2,13 +2,13 @@ package com.example.user_service.model;
 
 
 import jakarta.persistence.*;
-import jdk.jfr.DataAmount;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,18 +18,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    Long id;
+    public Long id;
 
     @Column(name = "email")
-    String email;
+    public String email;
 
     @Column(name = "name")
-    String name;
+    public String name;
 
     @Column(name = "surname")
-    String surname;
+    public String surname;
 
     @Column(name = "date_of_birth")
-    String dateOdBirth;
+    public String dateOdBirth;
+
+    @Column(name = "user_roles")
+    @ManyToMany
+    public List<Role> roles;
 
 }

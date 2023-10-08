@@ -10,17 +10,16 @@ import lombok.extern.slf4j.Slf4j;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "role")
+@Table(name = "roles")
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+            @Column(name = "role_id")
     Long id;
 
-    @Column(name = "role")
-    @ManyToOne
-    Role role;
+    @Column(name = "roleName")
+    String roleName;
 }

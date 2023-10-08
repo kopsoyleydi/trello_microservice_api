@@ -1,20 +1,17 @@
-package com.example.user_service.dto;
+package com.example.user_service.requestBodies;
 
-
-import com.example.user_service.model.Role;
+import com.example.user_service.dto.RoleDTO;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
-@Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserDTO {
+@AllArgsConstructor
+public class UserRequest {
 
     Long id;
 
@@ -26,6 +23,5 @@ public class UserDTO {
 
     String dateOdBirth;
 
-    @ManyToMany
-    List<RoleDTO> roles;
+    Long roleID;
 }

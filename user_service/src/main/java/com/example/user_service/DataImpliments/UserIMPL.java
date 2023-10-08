@@ -16,7 +16,7 @@ import java.util.Optional;
 @Slf4j
 public class UserIMPL implements UserRepoInter {
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public List<User> getAllUsers() {
