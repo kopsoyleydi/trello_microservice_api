@@ -53,18 +53,8 @@ public class UserRestController {
 
     @PostMapping(value = "/put_profile_image")
     ResponseEntity<?> putProfileImage(@RequestBody MultipartFile multipartFile, Long userId){
-        String profileImageId = UUID.randomUUID().toString();
-        UserDTO user = new UserDTO();
         try {
-            s3Service.putObject(
-                    "bekscloud",
-                    "trello_service/user_avatars/%s/%s".formatted(userId,profileImageId),
-                    multipartFile.getBytes()
-            );
-            user.setProfileUrl(profileImageId);
-            userService.changeUser(user);
-            logger.info("success");
-            return ResponseEntity.ok().body("Success");
+            return ResponseEntity.ok().body(userService.putProfileImage(multipartFile, userId));
         } catch (IOException exception) {
             return ResponseEntity.internalServerError().build();
         }
