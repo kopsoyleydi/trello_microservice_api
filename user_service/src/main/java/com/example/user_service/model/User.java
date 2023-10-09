@@ -26,6 +26,9 @@ public class User {
     @Column(name = "name")
     public String name;
 
+    @Column(name = "profile_url")
+    public String profileUrl;
+
     @Column(name = "surname")
     public String surname;
 

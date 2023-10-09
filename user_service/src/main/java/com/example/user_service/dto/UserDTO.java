@@ -22,6 +22,8 @@ public class UserDTO {
 
     String name;
 
+    String profileUrl;
+
     String surname;
 
     String dateOdBirth;
