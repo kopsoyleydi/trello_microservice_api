@@ -13,9 +13,8 @@ import com.example.user_service.requestBodies.UserRequest;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,12 +58,12 @@ public class UserRestService {
         List<Role> roles = new ArrayList<>();
         roles.add(role);
         User user = User.builder()
-                .id(userRequest.getId())
+                .name(userRequest.getName())
                 .password(userRequest.getPassword())
-                .dateOdBirth(userRequest.getPassword())
-                        .surname(userRequest.getSurname())
+                .dateOdBirth(userRequest.getDateOfBirth())
+                .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())
-                        .roles(roles).
+                .roles(roles).
                 build();
         logger.info("success");
         return userMapper.toDto(userIMPL.addNewUser(user));
