@@ -1,7 +1,6 @@
 # trello_microservice_api
 My first micro_service  architecture project
 
-<div>
     <h1>My Awesome Microservice</h1>
     
     <p>Welcome to the official documentation of My Awesome Microservice!</p>
@@ -48,5 +47,3 @@ My first micro_service  architecture project
     
     <h2>License</h2>
     <p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.</p>
-</div>
-
