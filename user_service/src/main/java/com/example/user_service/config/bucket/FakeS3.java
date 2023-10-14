@@ -1,4 +1,4 @@
-package com.example.user_service.bucket;
+package com.example.user_service.config.bucket;
 
 import org.apache.commons.io.FileUtils;
 import software.amazon.awssdk.awscore.exception.AwsServiceException;

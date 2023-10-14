@@ -1,4 +1,4 @@
-package com.example.user_service.bucket;
+package com.example.user_service.config.bucket;
 
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.ResponseInputStream;

@@ -18,6 +18,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "roleName")
+    @Column(name = "name")
     String roleName;
 }

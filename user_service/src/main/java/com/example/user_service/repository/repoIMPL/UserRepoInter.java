@@ -1,4 +1,4 @@
-package com.example.user_service.repoIMPL;
+package com.example.user_service.repository.repoIMPL;
 
 import com.example.user_service.model.User;
 

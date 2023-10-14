@@ -1,7 +1,7 @@
 package com.example.user_service.controller;
 
 
-import com.example.user_service.bucket.S3Service;
+import com.example.user_service.config.bucket.S3Service;
 import com.example.user_service.dto.UserDTO;
 
 import com.example.user_service.requestBodies.UserRequest;

@@ -1,4 +1,4 @@
-package com.example.user_service.bucket;
+package com.example.user_service.config.bucket;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,7 +1,7 @@
-package com.example.user_service.DataImpliments;
+package com.example.user_service.model.ModelImpliments;
 
 import com.example.user_service.model.User;
-import com.example.user_service.repoIMPL.UserRepoInter;
+import com.example.user_service.repository.repoIMPL.UserRepoInter;
 import com.example.user_service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

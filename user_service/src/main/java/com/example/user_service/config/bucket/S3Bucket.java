@@ -1,4 +1,4 @@
-package com.example.user_service.bucket;
+package com.example.user_service.config.bucket;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

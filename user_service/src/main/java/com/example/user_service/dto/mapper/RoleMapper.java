@@ -1,4 +1,4 @@
-package com.example.user_service.mapper;
+package com.example.user_service.dto.mapper;
 
 import com.example.user_service.dto.RoleDTO;
 import com.example.user_service.dto.UserDTO;

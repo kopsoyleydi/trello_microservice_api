@@ -2,11 +2,11 @@ package com.example.user_service.service;
 
 
 
-import com.example.user_service.DataImpliments.RoleIMPL;
-import com.example.user_service.DataImpliments.UserIMPL;
-import com.example.user_service.bucket.S3Service;
+import com.example.user_service.model.ModelImpliments.RoleIMPL;
+import com.example.user_service.model.ModelImpliments.UserIMPL;
+import com.example.user_service.config.bucket.S3Service;
 import com.example.user_service.dto.UserDTO;
-import com.example.user_service.mapper.UserMapper;
+import com.example.user_service.dto.mapper.UserMapper;
 import com.example.user_service.model.Role;
 import com.example.user_service.model.User;
 import com.example.user_service.requestBodies.UserRequest;
