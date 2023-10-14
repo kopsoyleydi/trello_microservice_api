@@ -14,7 +14,7 @@ public interface UserRepoInter {
 
     User addNewUser(User user);
 
-    User changeUserById(User user);
+    User changeUserInformation(User user);
 
     void deleteUserById(Long id);
 }

@@ -33,7 +33,7 @@ public class UserIMPL implements UserRepoInter {
     }
 
     @Override
-    public User changeUserById(User user) {
+    public User changeUserInformation(User user) {
         return userRepository.save(user);
     }
 

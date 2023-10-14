@@ -28,6 +28,4 @@ public class UserDTO {
 
     String dateOdBirth;
 
-    @ManyToMany
-    List<RoleDTO> roles;
 }

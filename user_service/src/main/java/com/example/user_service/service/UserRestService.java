@@ -15,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,7 +52,7 @@ public class UserRestService {
     }
 
     public void changeUser(UserDTO userDTO){
-        userMapper.toDto(userIMPL.changeUserById(userMapper.toModel(userDTO)));
+        userMapper.toDto(userIMPL.changeUserInformation(userMapper.toModel(userDTO)));
     }
 
     public UserDTO addNewUser(UserRequest userRequest){
@@ -60,7 +62,7 @@ public class UserRestService {
         User user = User.builder()
                 .name(userRequest.getName())
                 .password(userRequest.getPassword())
-                .dateOdBirth(userRequest.getDateOfBirth())
+                .dateOfBirth(userRequest.getDateOfBirth())
                 .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())
                 .roles(roles).
@@ -81,5 +83,31 @@ public class UserRestService {
         changeUser(user);
         logger.info("success");
         return user;
+    }
+
+    public byte[] getFileFromAws(Long userId) throws IOException{
+        try {
+            User user = userIMPL.getUserById(userId);
+            logger.info("Success");
+            byte[] ImageBytes =
+                    s3Service.getObject(
+                            "bekscloud", "trello_service/user_avatars/%s/%s"
+                                    .formatted(user.getId(),
+                                            user.getProfileUrl()));
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(ImageBytes).getBody();
+        }
+        catch (Exception e){
+            e.getStackTrace();
+        }
+        return null;
+    }
+
+    public UserDTO changeUserInformation(UserRequest userRequest){
+        User user = User.builder()
+                        .id(userRequest.getId())
+                                .surname(userRequest.getSurname())
+                                        .name(userRequest.getName())
+                                                .dateOfBirth(userRequest.getDateOfBirth()).build();
+        return userMapper.toDto(userIMPL.changeUserInformation(user));
     }
 }

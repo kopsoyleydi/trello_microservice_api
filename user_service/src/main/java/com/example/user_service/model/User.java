@@ -34,7 +34,7 @@ public class User {
     public String surname;
 
     @Column(name = "date_of_birth")
-    public String dateOdBirth;
+    public String dateOfBirth;
 
     @Column(name = "user_roles")
     @ManyToMany

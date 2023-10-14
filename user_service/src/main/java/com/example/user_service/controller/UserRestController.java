@@ -1,9 +1,11 @@
 package com.example.user_service.controller;
 
 
-import com.example.user_service.config.bucket.S3Service;
+
 import com.example.user_service.dto.UserDTO;
 
+
+import com.example.user_service.requestBodies.ProfileBody;
 import com.example.user_service.requestBodies.UserRequest;
 import com.example.user_service.service.UserRestService;
 import lombok.AccessLevel;
@@ -25,24 +27,24 @@ import java.util.logging.Logger;
 @RequestMapping(value = "/api/user")
 public class UserRestController {
 
-
     private final UserRestService userRestService;
-
-    private final S3Service s3Service;
 
     private static final Logger logger = Logger.getLogger(String.valueOf(UserRestController.class));
 
     @GetMapping(value = "/getAllUsers")
     List<UserDTO> getAllUsers(){
+        logger.info("The user list worked");
         return userRestService.getAllUsers();
     }
 
     @PostMapping(value = "/addUser")
     ResponseEntity<?> addUser(@RequestBody UserRequest userRequest){
         try {
+            logger.info("User successfully added");
             return ResponseEntity.ok(userRestService.addNewUser(userRequest));
         }
         catch (Exception e){
+            logger.warning("Something went woring");
             return new ResponseEntity<>(
                     HttpStatus.valueOf("Something went wrong")
             );
@@ -58,4 +60,40 @@ public class UserRestController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    @GetMapping (value = "/getCurrentUser")
+    ResponseEntity<?> getCurrentUser(@RequestBody ProfileBody profileBody){
+        try {
+            return ResponseEntity
+                    .ok()
+                    .body(userRestService.getUserById(profileBody.getId()));
+        }
+        catch (Exception e){
+            return ResponseEntity.internalServerError().body("Something went wrong");
+        }
+    }
+
+    @GetMapping(value = "/getProfilePicture")
+    ResponseEntity<?> getProfilePicture(@RequestBody ProfileBody profileBody){
+        try {
+            return ResponseEntity.ok().body(userRestService.getFileFromAws(profileBody.getId()));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Picture not found or picture not added");
+        }
+    }
+
+    @PostMapping(value = "/changeUserInformation")
+    ResponseEntity<?> changeUserInformation(@RequestBody UserRequest userRequest){
+        try {
+            logger.info("User information was changes");
+            return ResponseEntity
+                    .ok()
+                    .body(userRestService.changeUserInformation(userRequest));
+        }
+        catch (Exception e){
+            logger.warning("Something went wrong in change user information endpoint");
+            return ResponseEntity.internalServerError().body("Something went wrong");
+        }
+    }
+
 }
