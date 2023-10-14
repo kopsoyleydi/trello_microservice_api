@@ -3,14 +3,14 @@ package com.example.user_service.controller;
 
 
 import com.example.user_service.dto.UserDTO;
-
-
 import com.example.user_service.requestBodies.ProfileBody;
 import com.example.user_service.requestBodies.UserRequest;
 import com.example.user_service.service.UserRestService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @RestController
@@ -29,12 +29,14 @@ public class UserRestController {
 
     private final UserRestService userRestService;
 
+
+
     private static final Logger logger = Logger.getLogger(String.valueOf(UserRestController.class));
 
     @GetMapping(value = "/getAllUsers")
-    List<UserDTO> getAllUsers(){
+    Page<UserDTO> getAllUsers(@RequestBody Pageable pageable){
         logger.info("The user list worked");
-        return userRestService.getAllUsers();
+        return userRestService.getAllUsers(pageable);
     }
 
     @PostMapping(value = "/addUser")
