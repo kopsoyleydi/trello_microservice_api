@@ -1,6 +1,7 @@
 package com.example.user_service.service;
 
 
+
 import com.example.user_service.DataImpliments.RoleIMPL;
 import com.example.user_service.DataImpliments.UserIMPL;
 import com.example.user_service.bucket.S3Service;
@@ -9,11 +10,12 @@ import com.example.user_service.mapper.UserMapper;
 import com.example.user_service.model.Role;
 import com.example.user_service.model.User;
 import com.example.user_service.requestBodies.UserRequest;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,8 +29,7 @@ import java.util.logging.Logger;
 @Slf4j
 @RequiredArgsConstructor
 @Builder
-@FieldDefaults(level = AccessLevel.PUBLIC)
-public class UserService {
+public class UserRestService {
 
     private final UserIMPL userIMPL;
 
@@ -38,7 +39,8 @@ public class UserService {
 
     private final S3Service s3Service;
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(UserService.class));
+
+    private static final Logger logger = Logger.getLogger(String.valueOf(UserRestService.class));
 
     public List<UserDTO> getAllUsers(){
         return userMapper.toDtoList(userIMPL.getAllUsers());
@@ -53,15 +55,19 @@ public class UserService {
     }
 
     public UserDTO addNewUser(UserRequest userRequest){
-        Role role = roleIMPL.getRoleById(userRequest.getRoleID());
+        Role role = roleIMPL.getRoleById(1L);
         List<Role> roles = new ArrayList<>();
         roles.add(role);
-        return userMapper.toDto(userIMPL.addNewUser(User.builder()
-                .name(userRequest.getName())
-                .surname(userRequest.getSurname())
+        User user = User.builder()
+                .id(userRequest.getId())
+                .password(userRequest.getPassword())
+                .dateOdBirth(userRequest.getPassword())
+                        .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())
-                .dateOdBirth(userRequest.getDateOdBirth())
-                .roles(roles).build()));
+                        .roles(roles).
+                build();
+        logger.info("success");
+        return userMapper.toDto(userIMPL.addNewUser(user));
     }
 
     public UserDTO putProfileImage(MultipartFile multipartFile, Long userId) throws IOException {
@@ -77,5 +83,4 @@ public class UserService {
         logger.info("success");
         return user;
     }
-
 }

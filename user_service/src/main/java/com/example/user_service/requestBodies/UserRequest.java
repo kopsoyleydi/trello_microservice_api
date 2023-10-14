@@ -17,11 +17,12 @@ public class UserRequest {
 
     String email;
 
+    String password;
+
     String name;
 
     String surname;
 
     String dateOdBirth;
 
-    Long roleID;
 }

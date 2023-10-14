@@ -3,7 +3,6 @@ package com.example.user_service.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
@@ -21,6 +20,9 @@ public class User {
 
     @Column(name = "email")
     public String email;
+
+    @Column(name = "password")
+    public String password;
 
     @Column(name = "name")
     public String name;
