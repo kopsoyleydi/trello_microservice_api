@@ -17,10 +17,9 @@ public class Comments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "comments")
+    @Column(name = "comment")
     String comment;
 
-    @Column(name = "task_id")
     @ManyToOne
     Task task;
 

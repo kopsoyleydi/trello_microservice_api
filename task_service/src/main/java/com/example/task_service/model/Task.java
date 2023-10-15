@@ -7,7 +7,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
 
-@Entity
+@Entity(name = "tasks")
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
