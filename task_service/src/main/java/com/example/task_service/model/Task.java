@@ -6,6 +6,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity(name = "tasks")
 @Data
@@ -44,4 +45,7 @@ public class Task {
 
     @Column(name = "check")
     Boolean check;
+
+    @ManyToMany
+    List<PrivateUserCategory> privateUserCategories;
 }

@@ -1,6 +1,7 @@
 package com.example.task_service.DataImpliments;
 
 
+import com.example.task_service.model.PrivateUserCategory;
 import com.example.task_service.model.Task;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface TaskRepoInter {
 
     void deleteTaskByUserIdAndUserId(Long userId, Long taskId);
 
-
+    Task addUserPrivateCategory(PrivateUserCategory privateUserCategory);
 }
