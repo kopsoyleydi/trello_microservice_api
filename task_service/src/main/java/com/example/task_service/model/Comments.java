@@ -10,6 +10,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "comments")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Comments {
 

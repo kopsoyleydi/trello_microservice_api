@@ -11,11 +11,10 @@ public interface TaskRepoInter {
 
     List<Task> getAllTask();
 
-    List<Task> getTasksByUserId(Long id);
 
-    List<Task> getTaskByUserIdAndCategory(Long id, String type);
+    List<Task> getTaskByUserIdAndCategory(Long id, Long categoryId);
 
-    Task changeTaskInformationByIdAndUserId(Long taskID, Long userId);
+    Task changeTaskInformation(Task task);
 
     void deleteTaskByUserIdAndUserId(Long userId, Long taskId);
 
