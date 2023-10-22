@@ -1,8 +1,6 @@
 package com.example.task_service.dto;
 
-import com.example.task_service.model.Category;
-import com.example.task_service.model.PrivateUserCategory;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
@@ -23,7 +21,7 @@ public class TaskDTO {
     Long userId;
 
     @ManyToOne
-    Category category;
+    CategoryDTO category;
 
     @Builder.Default
     Instant createAt = Instant.now();
@@ -39,5 +37,5 @@ public class TaskDTO {
     Boolean check;
 
     @ManyToMany
-    List<PrivateUserCategory> privateUserCategories;
+    List<PrivateUserCategoryDTO> privateUserCategories;
 }

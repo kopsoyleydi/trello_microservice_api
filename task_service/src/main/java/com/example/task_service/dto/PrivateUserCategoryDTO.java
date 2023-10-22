@@ -1,6 +1,6 @@
 package com.example.task_service.dto;
 
-import jakarta.persistence.Column;
+
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
