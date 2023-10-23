@@ -7,4 +7,6 @@ public interface CategoryRepoInter {
     Category addCategory(Category category);
 
     Category changeCategory(Category category);
+
+    Category getCategoryById(Long id);
 }

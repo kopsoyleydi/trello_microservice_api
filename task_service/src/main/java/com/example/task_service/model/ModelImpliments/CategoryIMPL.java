@@ -20,4 +20,11 @@ public class CategoryIMPL implements CategoryRepoInter {
     public Category changeCategory(Category category) {
         return categoryRepository.save(category);
     }
+
+    @Override
+    public Category getCategoryById(Long id) {
+        return categoryRepository.findAllById(id);
+    }
+
+
 }

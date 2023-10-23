@@ -28,8 +28,7 @@ public class Task {
     Category category;
 
     @Column(name = "createAt")
-    @Builder.Default
-    Instant createAt = Instant.now();
+    Instant createAt;
 
     @Column(name = "header")
     String header;
@@ -42,6 +41,7 @@ public class Task {
 
     @Column(name = "comments")
     String comments;
+
 
     @Column(name = "check")
     Boolean check;
