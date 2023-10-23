@@ -6,10 +6,7 @@ import lombok.Data;
 
 @Data
 public class CommentRequest {
-
-
     String comment;
-
 
     Long taskId;
 

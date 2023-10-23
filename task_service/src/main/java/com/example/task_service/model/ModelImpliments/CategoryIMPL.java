@@ -6,6 +6,8 @@ import com.example.task_service.model.repository.repoIMPL.CategoryRepoInter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CategoryIMPL implements CategoryRepoInter {
@@ -24,6 +26,10 @@ public class CategoryIMPL implements CategoryRepoInter {
     @Override
     public Category getCategoryById(Long id) {
         return categoryRepository.findAllById(id);
+    }
+
+    public List<Category> getAllCategories(){
+        return categoryRepository.findAll();
     }
 
 

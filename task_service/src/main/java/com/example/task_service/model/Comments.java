@@ -21,8 +21,7 @@ public class Comments {
     @Column(name = "comment")
     String comment;
 
-    @ManyToOne
-    Task task;
+    Long taskId;
 
     @Column(name = "user_id")
     Long userId;

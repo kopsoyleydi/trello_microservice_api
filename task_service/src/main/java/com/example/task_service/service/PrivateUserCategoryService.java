@@ -4,7 +4,6 @@ package com.example.task_service.service;
 import com.example.task_service.dto.PrivateUserCategoryDTO;
 import com.example.task_service.dto.mapper.PrivateUserCategoryMapper;
 import com.example.task_service.model.ModelImpliments.PrivateUserCategoryIMPL;
-import com.example.task_service.model.PrivateUserCategory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
