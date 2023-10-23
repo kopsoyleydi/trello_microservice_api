@@ -9,7 +9,6 @@ import com.example.task_service.model.Category;
 import com.example.task_service.model.ModelImpliments.CategoryIMPL;
 import com.example.task_service.model.ModelImpliments.TaskIMPL;
 import com.example.task_service.model.Task;
-import com.example.task_service.model.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

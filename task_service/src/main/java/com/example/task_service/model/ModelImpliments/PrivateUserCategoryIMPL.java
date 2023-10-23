@@ -6,6 +6,8 @@ import com.example.task_service.model.repository.repoIMPL.PrivateUserCategoryRep
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PrivateUserCategoryIMPL implements PrivateUserCategoryRepoInter {
@@ -15,5 +17,10 @@ public class PrivateUserCategoryIMPL implements PrivateUserCategoryRepoInter {
     @Override
     public PrivateUserCategory addPrivateUserCategoryByUserId(PrivateUserCategory privateUserCategory) {
         return privateUserCategoryRepository.save(privateUserCategory);
+    }
+
+    @Override
+    public List<PrivateUserCategory> getPrivateUserCategoriesByUserId(Long userId) {
+        return privateUserCategoryRepository.findAllByUserId(userId);
     }
 }
