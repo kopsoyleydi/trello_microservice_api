@@ -1,7 +1,6 @@
 package com.example.task_service.service;
 
 
-import com.example.task_service.apiBodies.CategoryRequest;
 import com.example.task_service.dto.CategoryDTO;
 import com.example.task_service.dto.mapper.CategoryMapper;
 import com.example.task_service.model.ModelImpliments.CategoryIMPL;
@@ -18,7 +17,7 @@ public class CategoryService {
 
     private final CategoryMapper categoryMapper;
 
-    public List<CategoryDTO> getCategories(CategoryRequest categoryRequest){
+    public List<CategoryDTO> getCategories(){
         return categoryMapper.toDtoList(categoryIMPL.getAllCategories());
     }
 }

@@ -11,10 +11,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PrivateUserCategoryDTO {
     Long id;
-
     String name;
-
     String description;
-
     Long userId;
 }
