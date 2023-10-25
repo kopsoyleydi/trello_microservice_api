@@ -17,3 +17,4 @@ My first micro_service  architecture project
 - ✅ Login/Registration systems for auth-user microservice
 - ✅ Email notifications using Java Email Sender
 - ✅ Follows SOLID principles for maintainability
+- ✅ Spring Cloud Eureka Service
