@@ -5,6 +5,7 @@ import com.example.user_service.model.repository.repoIMPL.UserRepoInter;
 import com.example.user_service.model.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 

@@ -6,6 +6,7 @@ import com.example.user_service.model.repository.repoIMPL.UserPaginationInter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service

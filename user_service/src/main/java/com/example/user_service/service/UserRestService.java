@@ -11,42 +11,55 @@ import com.example.user_service.dto.mapper.UserMapper;
 import com.example.user_service.model.ModelImpliments.UserPaginationIMPL;
 import com.example.user_service.model.Role;
 import com.example.user_service.model.User;
+import com.example.user_service.model.repository.UserRepository;
 import com.example.user_service.requestBodies.UserRequest;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Logger;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
-@Builder
-public class UserRestService {
+public class UserRestService implements UserDetailsService {
 
-    private final UserIMPL userIMPL;
+    @Autowired
+    private UserIMPL userIMPL;
 
-    private final RoleIMPL roleIMPL;
+    @Autowired
+    private RoleIMPL roleIMPL;
 
-    private final UserPaginationIMPL userPaginationIMPL;
+    @Autowired
+    private UserPaginationIMPL userPaginationIMPL;
 
-    private final UserMapper userMapper;
+    @Autowired
+    private UserMapper userMapper;
 
-    private final UserPaginationMapper userPaginationMapper;
+    @Autowired
+    private UserPaginationMapper userPaginationMapper;
 
-    private final S3Service s3Service;
+    @Autowired
+    private S3Service s3Service;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     private static final Logger logger = Logger.getLogger(String.valueOf(UserRestService.class));
@@ -117,5 +130,13 @@ public class UserRestService {
                                         .name(userRequest.getName())
                                                 .dateOfBirth(userRequest.getDateOfBirth()).build();
         return userMapper.toDto(userIMPL.changeUserInformation(user));
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> credential = userRepository.findByEmail(username);
+        return credential.map(User::new)
+                .orElseThrow(() -> new UsernameNotFoundException(
+                        "user not found with name :" + username));
     }
 }
