@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 @RestController
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PUBLIC)
-@RequestMapping(value = "/api/user")
+@RequestMapping(value = "/user_service/api/")
 public class UserRestController {
 
     private final UserRestService userRestService;
@@ -32,11 +32,11 @@ public class UserRestController {
 
     private static final Logger logger = Logger.getLogger(String.valueOf(UserRestController.class));
 
-    @GetMapping(value = "/getAllUsers")
-    Page<UserDTO> getAllUsers(@RequestBody Pageable pageable){
-        logger.info("The user list worked");
-        return userRestService.getAllUsers(pageable);
-    }
+//    @GetMapping(value = "/getAllUsers")
+//    Page<UserDTO> getAllUsers(@RequestBody Pageable pageable){
+//        logger.info("The user list worked");
+//        return userRestService.getAllUsers(pageable);
+//    }
 
     @PostMapping(value = "/addUser")
     ResponseEntity<?> addUser(@RequestBody UserRequest userRequest){

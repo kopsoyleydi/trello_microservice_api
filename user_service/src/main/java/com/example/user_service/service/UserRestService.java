@@ -2,7 +2,6 @@ package com.example.user_service.service;
 
 
 
-import com.example.user_service.dto.mapper.UserPaginationMapper;
 import com.example.user_service.model.ModelImpliments.RoleIMPL;
 import com.example.user_service.model.ModelImpliments.UserIMPL;
 import com.example.user_service.config.bucket.S3Service;
@@ -13,20 +12,17 @@ import com.example.user_service.model.Role;
 import com.example.user_service.model.User;
 import com.example.user_service.model.repository.UserRepository;
 import com.example.user_service.requestBodies.UserRequest;
-import lombok.Builder;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -52,8 +48,6 @@ public class UserRestService implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
-    @Autowired
-    private UserPaginationMapper userPaginationMapper;
 
     @Autowired
     private S3Service s3Service;
@@ -64,9 +58,6 @@ public class UserRestService implements UserDetailsService {
 
     private static final Logger logger = Logger.getLogger(String.valueOf(UserRestService.class));
 
-    public Page<UserDTO> getAllUsers(Pageable pageable){
-        return userPaginationMapper.toPageList(userPaginationIMPL.getPageWithAllUsers(pageable));
-    }
 
     public UserDTO getUserById(Long id){
         return userMapper.toDto(userIMPL.getUserById(id));

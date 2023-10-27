@@ -100,6 +100,7 @@ public class JwtTokenUtil {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
     public List<String> getRoles(String token) {
         List<String> roles = extractAllClaims(token).get("roles", List.class);
         if (roles == null) {

@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -19,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig{
 
     @Bean
@@ -38,15 +40,15 @@ public class SecurityConfig{
         http.exceptionHandling(
                 httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.configure(http));
 
-        http
+        return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/api/**)").authenticated().requestMatchers("/admin/***").hasRole("ADMIN")
-                                .dispatcherTypeMatchers(HttpMethod.valueOf("/user")).authenticated())
+                                .dispatcherTypeMatchers(HttpMethod.valueOf("/user"))
+                                .authenticated().requestMatchers("/basic/**").permitAll())
                 .build();
 
 
-        return http.build();
     }
 
     @Bean

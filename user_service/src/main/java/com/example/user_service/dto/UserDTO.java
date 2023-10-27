@@ -2,6 +2,7 @@ package com.example.user_service.dto;
 
 
 import com.example.user_service.model.Role;
+import jakarta.persistence.Column;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,18 +18,21 @@ import java.util.List;
 @NoArgsConstructor
 public class UserDTO {
 
-    Long id;
+    public Long id;
 
-    String email;
+    public String email;
 
-    String name;
+    public String password;
 
-    String profileUrl;
+    public String name;
 
-    String roles;
+    public String profileUrl;
 
-    String surname;
+    public String surname;
 
-    String dateOdBirth;
+    public String dateOfBirth;
+
+    @ManyToMany
+    public List<Role> roles;
 
 }
