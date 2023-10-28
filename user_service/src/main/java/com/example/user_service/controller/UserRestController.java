@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 @RestController
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PUBLIC)
-@RequestMapping(value = "/user_service/api/")
+@RequestMapping(value = "/users")
 public class UserRestController {
 
     private final UserRestService userRestService;
