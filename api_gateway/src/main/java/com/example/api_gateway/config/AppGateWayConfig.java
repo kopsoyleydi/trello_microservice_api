@@ -21,9 +21,9 @@ public class AppGateWayConfig {
                 .route("user-service", r -> r.path("/users/**")
                         .filters(f -> f.filter(filter))
                         .uri("lb://user-service"))
-                .route("auth-service", r -> r.path("/auth/**")
+                .route("task-service", r -> r.path("/task/**")
                         .filters(f -> f.filter(filter))
-                        .uri("lb://auth-service"))
+                        .uri("lb://task-service"))
                 .build();
     }
 }

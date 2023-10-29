@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 @RestController
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PUBLIC)
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/users/api")
 public class UserRestController {
 
     private final UserRestService userRestService;
@@ -38,20 +38,6 @@ public class UserRestController {
 //        return userRestService.getAllUsers(pageable);
 //    }
 
-    @PostMapping(value = "/addUser")
-    ResponseEntity<?> addUser(@RequestBody UserRequest userRequest){
-        try {
-            logger.info("User successfully added");
-            return ResponseEntity.ok(userRestService.addNewUser(userRequest));
-        }
-        catch (Exception e){
-            logger.warning("Something went woring");
-            return new ResponseEntity<>(
-                    HttpStatus.valueOf("Something went wrong")
-            );
-
-        }
-    }
 
     @PostMapping(value = "/put_profile_image")
     ResponseEntity<?> putProfileImage(@RequestBody MultipartFile multipartFile, Long userId){
