@@ -21,6 +21,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -55,6 +57,9 @@ public class UserRestService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     private static final Logger logger = Logger.getLogger(String.valueOf(UserRestService.class));
 
@@ -73,7 +78,7 @@ public class UserRestService implements UserDetailsService {
         roles.add(role);
         User user = User.builder()
                 .name(userRequest.getName())
-                .password(userRequest.getPassword())
+                .password(passwordEncoder.encode(userRequest.getPassword()))
                 .dateOfBirth(userRequest.getDateOfBirth())
                 .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())

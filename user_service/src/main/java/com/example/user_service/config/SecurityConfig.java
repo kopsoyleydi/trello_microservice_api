@@ -43,9 +43,9 @@ public class SecurityConfig{
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/users/api/**)").authenticated().requestMatchers("/admin/***").hasRole("ADMIN")
+                        auth.requestMatchers("/api/**)").authenticated().requestMatchers("/admin/***").hasRole("ADMIN")
                                 .dispatcherTypeMatchers(HttpMethod.valueOf("/user"))
-                                .authenticated().requestMatchers("/users/**").permitAll())
+                                .authenticated().anyRequest().permitAll())
                 .build();
 
 
