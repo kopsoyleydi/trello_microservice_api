@@ -18,11 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,16 +32,13 @@ import java.util.logging.Logger;
 
 @Service
 @Slf4j
-public class UserRestService implements UserDetailsService {
+public class UserRestService {
 
     @Autowired
     private UserIMPL userIMPL;
 
     @Autowired
     private RoleIMPL roleIMPL;
-
-    @Autowired
-    private UserPaginationIMPL userPaginationIMPL;
 
     @Autowired
     private UserMapper userMapper;
@@ -57,8 +50,6 @@ public class UserRestService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
 
     private static final Logger logger = Logger.getLogger(String.valueOf(UserRestService.class));
@@ -78,7 +69,7 @@ public class UserRestService implements UserDetailsService {
         roles.add(role);
         User user = User.builder()
                 .name(userRequest.getName())
-                .password(passwordEncoder.encode(userRequest.getPassword()))
+                .password(userRequest.getPassword())
                 .dateOfBirth(userRequest.getDateOfBirth())
                 .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())
@@ -128,11 +119,4 @@ public class UserRestService implements UserDetailsService {
         return userMapper.toDto(userIMPL.changeUserInformation(user));
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> credential = userRepository.findByEmail(username);
-        return credential.map(User::new)
-                .orElseThrow(() -> new UsernameNotFoundException(
-                        "user not found with name :" + username));
-    }
 }

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.GrantedAuthority;
 
 @Data
 @Slf4j
@@ -13,7 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 @AllArgsConstructor
 @Table(name = "roles")
 @Builder
-public class Role implements GrantedAuthority {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +21,4 @@ public class Role implements GrantedAuthority {
     @Column(name = "name")
     String roleName;
 
-    @Override
-    public String getAuthority() {
-        return this.roleName;
-    }
 }
