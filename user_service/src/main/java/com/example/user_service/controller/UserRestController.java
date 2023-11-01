@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 
 @RestController
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PUBLIC)
 @RequestMapping(value = "/users/api")
 public class UserRestController {
 

@@ -47,8 +47,6 @@ public class UserRestService {
     @Autowired
     private S3Service s3Service;
 
-    @Autowired
-    private UserRepository userRepository;
 
 
 
