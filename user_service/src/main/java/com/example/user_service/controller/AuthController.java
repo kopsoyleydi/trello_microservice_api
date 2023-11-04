@@ -1,16 +1,15 @@
 package com.example.user_service.controller;
 
 
+import com.example.user_service.dto.UserDTO;
 import com.example.user_service.requestBodies.UserRequest;
+import com.example.user_service.requestBodies.response.CommonResponse;
 import com.example.user_service.service.impl.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.logging.Logger;
 
 @RestController
@@ -23,19 +22,31 @@ public class AuthController {
     private static final Logger logger = Logger.getLogger(String.valueOf(AuthController.class));
 
 
-    @PostMapping(value = "/addUser")
-    ResponseEntity<?> addUser(@RequestBody UserRequest userRequest){
+    @PostMapping(value = "/register")
+    CommonResponse addUser(@RequestBody UserRequest userRequest){
         try {
             logger.info("User successfully added");
-            return ResponseEntity.ok(userRestService.addNewUser(userRequest));
+            userRestService.addNewUser(userRequest);
+            return CommonResponse.builder().data(new Date().getTime()).message("Register success")
+                    .status(HttpStatus.OK).build();
         }
         catch (Exception e){
             logger.warning("Something went woring");
-            return new ResponseEntity<>(
-                    HttpStatus.valueOf("Something went wrong")
-            );
-
+            return CommonResponse.builder()
+                    .message("Something went wrong")
+                    .data(new Date().getTime())
+                    .status(HttpStatus.MULTI_STATUS)
+                    .build();
         }
     }
 
+    @GetMapping("login/{email}")
+    public CommonResponse getUserByEmail(@PathVariable String email) {
+        UserDTO userDTO = userRestService.getUserByEmail(email);
+        return CommonResponse.builder()
+                .status(HttpStatus.OK)
+                .data(userDTO)
+                .message("Success")
+                .build();
+    }
 }

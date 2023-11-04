@@ -1,10 +1,12 @@
 package com.example.authservice.service.impl;
 
+import com.example.authservice.dto.UserAuthInfo;
 import com.example.authservice.request.AuthRequest;
 import com.example.authservice.request.RegisterRequest;
 import com.example.authservice.response.CommonResponse;
 import com.example.authservice.service.AuthService;
 import com.example.authservice.service.JwtService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ public class AuthServiceImpl implements AuthService {
     public CommonResponse register(RegisterRequest registerRequest) {
          CommonResponse response = webClientBuilder.build()
                 .post()
-                .uri("http://user-service/api/users")
+                .uri("http://user-service/users/auth/register")
                 .bodyValue(registerRequest)
                 .retrieve()
                 .bodyToMono(CommonResponse.class)
@@ -40,6 +42,30 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public CommonResponse login(AuthRequest authRequest) {
-        return null;
+        CommonResponse response = webClientBuilder.build()
+                .get()
+                .uri("http://user-service/users/auth/login/" + authRequest.getEmail())
+                .retrieve()
+                .bodyToMono(CommonResponse.class)
+                .block();
+
+        UserAuthInfo userAuthInfo = new ObjectMapper().convertValue(response.getData(), UserAuthInfo.class);
+
+        if (userAuthInfo == null || !passwordEncoder.matches(authRequest.getPassword(), userAuthInfo.getPassword())) {
+            response = CommonResponse.builder()
+                    .status(400)
+                    .message("Invalid credentials")
+                    .build();
+            return response;
+        }
+
+        String token = jwtService.generateToken(userAuthInfo);
+
+
+        return CommonResponse.builder()
+                .status(200)
+                .message("Login success")
+                .data(token)
+                .build();
     }
 }

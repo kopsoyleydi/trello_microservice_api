@@ -6,9 +6,10 @@ import lombok.Data;
 @Data
 @Builder
 public class RegisterRequest {
-    String name;
-    String surname;
-    String email;
-    String password;
-    String dateOfBirth;
+    private Long id;
+    private String name;
+    private String surname;
+    private String email;
+    private String password;
+    private String dateOfBirth;
 }
