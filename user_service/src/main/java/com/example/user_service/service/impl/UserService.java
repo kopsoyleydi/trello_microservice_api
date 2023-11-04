@@ -69,15 +69,13 @@ public class UserService implements UserServiceInter {
 
     public UserDTO addNewUser(UserRequest userRequest){
         Role role = roleIMPL.getRoleById(1L);
-        List<Role> roles = new ArrayList<>();
-        roles.add(role);
         User user = User.builder()
                 .name(userRequest.getName())
                 .password(passwordEncoder.encode(userRequest.getPassword()))
                 .dateOfBirth(userRequest.getDateOfBirth())
                 .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())
-                .roles(roles).
+                .role(role).
                 build();
         logger.info("success");
         return userMapper.toDto(userIMPL.addNewUser(user));

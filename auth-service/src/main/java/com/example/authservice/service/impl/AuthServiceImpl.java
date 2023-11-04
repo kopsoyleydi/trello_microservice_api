@@ -8,6 +8,7 @@ import com.example.authservice.service.AuthService;
 import com.example.authservice.service.JwtService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -33,7 +34,7 @@ public class AuthServiceImpl implements AuthService {
         if (response == null) {
             return CommonResponse.builder()
                     .message("User creation failed")
-                    .status(500)
+                    .status(HttpStatus.MULTI_STATUS)
                     .build();
         }
 
@@ -53,7 +54,7 @@ public class AuthServiceImpl implements AuthService {
 
         if (userAuthInfo == null || !passwordEncoder.matches(authRequest.getPassword(), userAuthInfo.getPassword())) {
             response = CommonResponse.builder()
-                    .status(400)
+                    .status(HttpStatus.BAD_REQUEST)
                     .message("Invalid credentials")
                     .build();
             return response;
@@ -63,7 +64,7 @@ public class AuthServiceImpl implements AuthService {
 
 
         return CommonResponse.builder()
-                .status(200)
+                .status(HttpStatus.OK)
                 .message("Login success")
                 .data(token)
                 .build();

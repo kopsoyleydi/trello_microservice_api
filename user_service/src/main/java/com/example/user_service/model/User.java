@@ -36,8 +36,7 @@ public class User {
     @Column(name = "date_of_birth")
     public String dateOfBirth;
 
-    @Column(name = "user_roles")
-    @ManyToMany
-    public List<Role> roles;
+    @ManyToOne
+    public Role role;
 
 }

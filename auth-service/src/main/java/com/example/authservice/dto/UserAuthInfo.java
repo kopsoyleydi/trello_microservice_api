@@ -5,13 +5,27 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+import java.util.List;
+
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserAuthInfo {
-    private String id;
-    private String email;
-    private String password;
-    private String role;
+    public Long id;
+
+    public String email;
+
+    public String password;
+
+    public String name;
+
+    public String profileUrl;
+
+    public String surname;
+
+    public String dateOfBirth;
+
+    public RoleDto role;
 }

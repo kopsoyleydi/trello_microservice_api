@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 @RequiredArgsConstructor
 @RequestMapping(value = "/users/auth")
 public class AuthController {
-
     private final UserService userRestService;
 
     private static final Logger logger = Logger.getLogger(String.valueOf(AuthController.class));
