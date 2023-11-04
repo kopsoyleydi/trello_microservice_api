@@ -2,16 +2,10 @@ package com.example.user_service.controller;
 
 
 
-import com.example.user_service.dto.UserDTO;
 import com.example.user_service.requestBodies.ProfileBody;
 import com.example.user_service.requestBodies.UserRequest;
-import com.example.user_service.service.UserRestService;
-import lombok.AccessLevel;
+import com.example.user_service.service.impl.UserService;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,18 +19,9 @@ import java.util.logging.Logger;
 @RequestMapping(value = "/users/api")
 public class UserRestController {
 
-    private final UserRestService userRestService;
-
-
+    private final UserService userRestService;
 
     private static final Logger logger = Logger.getLogger(String.valueOf(UserRestController.class));
-
-//    @GetMapping(value = "/getAllUsers")
-//    Page<UserDTO> getAllUsers(@RequestBody Pageable pageable){
-//        logger.info("The user list worked");
-//        return userRestService.getAllUsers(pageable);
-//    }
-
 
     @PostMapping(value = "/put_profile_image")
     ResponseEntity<?> putProfileImage(@RequestBody MultipartFile multipartFile, Long userId){
@@ -75,6 +60,20 @@ public class UserRestController {
             return ResponseEntity
                     .ok()
                     .body(userRestService.changeUserInformation(userRequest));
+        }
+        catch (Exception e){
+            logger.warning("Something went wrong in change user information endpoint");
+            return ResponseEntity.internalServerError().body("Something went wrong");
+        }
+    }
+
+    @GetMapping(value = "/getUserByEmail")
+    ResponseEntity<?> getUserByEmail(@RequestParam String email){
+        try {
+            logger.info("Get Email");
+            return ResponseEntity
+                    .ok()
+                    .body(userRestService.getUserByEmail(email));
         }
         catch (Exception e){
             logger.warning("Something went wrong in change user information endpoint");

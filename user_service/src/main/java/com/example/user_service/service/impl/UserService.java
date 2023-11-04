@@ -1,4 +1,4 @@
-package com.example.user_service.service;
+package com.example.user_service.service.impl;
 
 
 
@@ -7,11 +7,10 @@ import com.example.user_service.model.ModelImpliments.UserIMPL;
 import com.example.user_service.config.bucket.S3Service;
 import com.example.user_service.dto.UserDTO;
 import com.example.user_service.dto.mapper.UserMapper;
-import com.example.user_service.model.ModelImpliments.UserPaginationIMPL;
 import com.example.user_service.model.Role;
 import com.example.user_service.model.User;
-import com.example.user_service.model.repository.UserRepository;
 import com.example.user_service.requestBodies.UserRequest;
+import com.example.user_service.service.UserServiceInter;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -19,20 +18,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Logger;
 
 @Service
 @Slf4j
-public class UserRestService {
+public class UserService implements UserServiceInter {
 
     @Autowired
     private UserIMPL userIMPL;
@@ -47,14 +46,21 @@ public class UserRestService {
     @Autowired
     private S3Service s3Service;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
 
-    private static final Logger logger = Logger.getLogger(String.valueOf(UserRestService.class));
+    private static final Logger logger = Logger.getLogger(String.valueOf(UserService.class));
 
 
     public UserDTO getUserById(Long id){
         return userMapper.toDto(userIMPL.getUserById(id));
+    }
+
+    @Override
+    public UserDTO getUserByEmail(String email) {
+        return userMapper.toDto(userIMPL.getUserByEmail(email));
     }
 
     public void changeUser(UserDTO userDTO){
@@ -67,7 +73,7 @@ public class UserRestService {
         roles.add(role);
         User user = User.builder()
                 .name(userRequest.getName())
-                .password(userRequest.getPassword())
+                .password(passwordEncoder.encode(userRequest.getPassword()))
                 .dateOfBirth(userRequest.getDateOfBirth())
                 .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())

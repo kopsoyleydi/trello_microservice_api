@@ -16,5 +16,7 @@ public interface UserRepoInter {
 
     User changeUserInformation(User user);
 
+    User getUserByEmail(String email);
+
     void deleteUserById(Long id);
 }

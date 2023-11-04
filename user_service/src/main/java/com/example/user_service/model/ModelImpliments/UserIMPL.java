@@ -39,6 +39,11 @@ public class UserIMPL implements UserRepoInter {
     }
 
     @Override
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
