@@ -7,7 +7,7 @@ My first micro_service  architecture project
 - ✅ HTTP & API development
 - ✅ Databases & MySQL
 - ✅ Spring Data JPA
-- ✅ Flyway for seamless database migrations
+- ✅ Liquibase for seamless database migrations
 - ✅ JDBC for efficient database communication
 - ✅ Unit and Integration testing
 - ✅ Docker for containerization and deployment
@@ -18,3 +18,4 @@ My first micro_service  architecture project
 - ✅ Email notifications using Java Email Sender
 - ✅ Follows SOLID principles for maintainability
 - ✅ Spring Cloud Eureka Service
+- ✅ Apache Kafka
