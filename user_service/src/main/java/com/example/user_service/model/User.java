@@ -3,7 +3,6 @@ package com.example.user_service.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.List;
 
 @Entity
 @Getter

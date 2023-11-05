@@ -1,7 +1,6 @@
 package com.example.user_service.controller;
 
 
-
 import com.example.user_service.requestBodies.ProfileBody;
 import com.example.user_service.requestBodies.UserRequest;
 import com.example.user_service.service.impl.UserService;
@@ -9,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 
 import java.io.IOException;
 import java.util.logging.Logger;

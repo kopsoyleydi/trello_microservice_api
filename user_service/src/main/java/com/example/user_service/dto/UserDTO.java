@@ -2,16 +2,11 @@ package com.example.user_service.dto;
 
 
 import com.example.user_service.model.Role;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Data
 @Builder

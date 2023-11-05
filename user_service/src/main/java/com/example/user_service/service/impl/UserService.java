@@ -1,31 +1,24 @@
 package com.example.user_service.service.impl;
 
 
-
-import com.example.user_service.model.ModelImpliments.RoleIMPL;
-import com.example.user_service.model.ModelImpliments.UserIMPL;
 import com.example.user_service.config.bucket.S3Service;
 import com.example.user_service.dto.UserDTO;
 import com.example.user_service.dto.mapper.UserMapper;
+import com.example.user_service.model.ModelImpliments.RoleIMPL;
+import com.example.user_service.model.ModelImpliments.UserIMPL;
 import com.example.user_service.model.Role;
 import com.example.user_service.model.User;
 import com.example.user_service.requestBodies.UserRequest;
 import com.example.user_service.service.UserServiceInter;
 import lombok.extern.slf4j.Slf4j;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
 
