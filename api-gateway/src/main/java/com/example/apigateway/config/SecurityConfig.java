@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec
                         .pathMatchers( "/eureka/**","/api/auth/**").permitAll()
+                        .pathMatchers("/api/tasks/**").hasRole("USER")
                         .pathMatchers("/api/users/**").hasRole("USER")
                         .anyExchange().authenticated()
                 )
