@@ -1,4 +1,4 @@
-package com.example.taskservice.bucket;
+package com.example.taskservice.amazon.bucket;
 
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.ResponseInputStream;

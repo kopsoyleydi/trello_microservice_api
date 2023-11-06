@@ -1,4 +1,4 @@
-package com.example.taskservice.bucket;
+package com.example.taskservice.amazon.bucket;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

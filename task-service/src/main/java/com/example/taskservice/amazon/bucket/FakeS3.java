@@ -1,4 +1,4 @@
-package com.example.taskservice.bucket;
+package com.example.taskservice.amazon.bucket;
 
 import org.apache.commons.io.FileUtils;
 import software.amazon.awssdk.awscore.exception.AwsServiceException;
