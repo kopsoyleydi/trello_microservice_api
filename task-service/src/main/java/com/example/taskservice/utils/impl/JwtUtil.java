@@ -1,6 +1,6 @@
-package com.example.apigateway.service.impl;
+package com.example.taskservice.utils.impl;
 
-import com.example.apigateway.service.JwtService;
+import com.example.taskservice.utils.JwtUtilInter;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -15,28 +15,20 @@ import java.util.function.Function;
 
 @Service
 @RequiredArgsConstructor
-public class JwtServiceImpl implements JwtService {
+public class JwtUtil implements JwtUtilInter {
 
     @Value("${mysecutirykey}")
     private String SECRET_KEY;
+    @Override
+    public String extractRole(String jwt) {
+        return extractClaim(jwt, c -> c.get("role", String.class));
+    }
 
+
+    @Override
     public String extractEmail(String jwt) {
         return extractClaim(jwt, Claims::getSubject);
     }
-
-    @Override
-    public boolean validateToken(String jwt, String comparedJwtInRedis) {
-        final String email = extractEmail(jwt);
-        final String role = extractRole(jwt);
-
-        return email.equals(extractEmail(comparedJwtInRedis))
-                && role.equals(extractRole(comparedJwtInRedis))
-                && !isTokenExpired(jwt);
-    }
-
-        public String extractRole(String jwt) {
-            return extractClaim(jwt, c -> c.get("role", String.class));
-        }
 
 
     private <T> T extractClaim(String jwt, Function<Claims, T> claimsResolver) {
@@ -64,5 +56,4 @@ public class JwtServiceImpl implements JwtService {
     private Date extractExpiration(String jwt) {
         return extractClaim(jwt, Claims::getExpiration);
     }
-
 }
