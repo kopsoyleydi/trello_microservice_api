@@ -22,10 +22,11 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @Column(name = "name")
     private String name;
 
-    private Instant create_at;
+    @Column(name = "created_at")
+    private Instant created_at;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<TaskList> lists;

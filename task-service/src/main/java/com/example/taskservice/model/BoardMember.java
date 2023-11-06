@@ -30,6 +30,7 @@ public class BoardMember {
     )
     private List<User> users;
 
+    @Column(name = "role")
     private String role;
 
 }

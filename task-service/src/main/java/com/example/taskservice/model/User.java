@@ -21,11 +21,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "email")
     private String email;
-
-    private String password;
 
     @ManyToMany(mappedBy = "users")
     private List<BoardMember> boardMembers;

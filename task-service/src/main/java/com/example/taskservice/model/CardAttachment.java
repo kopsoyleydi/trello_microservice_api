@@ -19,7 +19,6 @@ public class CardAttachment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @ManyToOne
     @JoinColumn(name = "card_id")
     private Card card;

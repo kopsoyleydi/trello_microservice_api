@@ -25,5 +25,6 @@ public class CardLabel {
     @JoinColumn(name = "card_id")
     private Card card;
 
+    @Column(name = "color")
     private String color;
 }

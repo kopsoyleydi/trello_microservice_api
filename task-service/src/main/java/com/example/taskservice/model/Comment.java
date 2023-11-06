@@ -30,8 +30,10 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(name = "text")
     private String text;
 
+    @Column(name = "created_at")
     private Instant created_at;
 
 }

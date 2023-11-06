@@ -26,12 +26,16 @@ public class Card {
     @Column(name = "list_id")
     private TaskList taskList;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "position")
     private String position;
 
+    @Column(name = "created_at")
     private Instant created_at;
 
 
