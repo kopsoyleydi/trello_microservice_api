@@ -16,6 +16,7 @@ import java.time.Instant;
 @Data
 @Builder
 public class TaskList {
+
     @Id
     @Column(name = "list_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

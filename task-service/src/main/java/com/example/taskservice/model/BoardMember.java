@@ -18,7 +18,7 @@ public class BoardMember {
 
 
     @Id
-    @Column(name = "board_id")
+    @Column(name = "board_member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
