@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Transactional
 public interface ActivityLogRepository extends JpaRepository<ActivityLog, Long> {
+
 }

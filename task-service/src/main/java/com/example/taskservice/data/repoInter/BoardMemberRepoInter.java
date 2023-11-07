@@ -9,11 +9,12 @@ public interface BoardMemberRepoInter {
 
     BoardMember addBoardMember(BoardMember boardMember);
 
-    void deleteMemberFromBoard(List<User> users);
+    void deleteMemberFromBoard(BoardMember boardMember);
 
-    void deleteMembersFromBoard(List<User> users);
+    void deleteMembersFromBoard(BoardMember boardMember);
 
-    void deleteBoardMember(BoardMember boardMember);
 
     BoardMember addOnlyMembersToBoardMember(BoardMember boardMember);
+
+    BoardMember changeBoardMember(BoardMember boardMember);
 }

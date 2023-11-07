@@ -20,22 +20,24 @@ public class BoardMemberRepoInterImpl implements BoardMemberRepoInter {
     }
 
     @Override
-    public void deleteMemberFromBoard(List<User> users) {
-        boardMemberRepository.deleteByUsers(users);
+    public void deleteMemberFromBoard(BoardMember boardMember) {
+        boardMemberRepository.save(boardMember);
     }
 
     @Override
-    public void deleteMembersFromBoard(List<User> users) {
-        boardMemberRepository.deleteByUsers(users);
+    public void deleteMembersFromBoard(BoardMember boardMember) {
+        boardMemberRepository.save(boardMember);
     }
 
-    @Override
-    public void deleteBoardMember(BoardMember boardMember) {
-        boardMemberRepository.delete(boardMember);
-    }
+
 
     @Override
     public BoardMember addOnlyMembersToBoardMember(BoardMember boardMember) {
+        return boardMemberRepository.save(boardMember);
+    }
+
+    @Override
+    public BoardMember changeBoardMember(BoardMember boardMember) {
         return boardMemberRepository.save(boardMember);
     }
 }
