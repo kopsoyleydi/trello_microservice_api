@@ -19,3 +19,4 @@ My first micro_service  architecture project
 - ✅ Follows SOLID principles for maintainability
 - ✅ Spring Cloud Eureka Service
 - ✅ Apache Kafka
+- ✅ Mapstruct
