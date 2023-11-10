@@ -1,7 +1,6 @@
 package com.example.taskservice.dto;
 
-import com.example.taskservice.model.Card;
-import com.example.taskservice.model.User;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

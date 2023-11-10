@@ -1,7 +1,6 @@
 package com.example.taskservice.dto;
 
-import com.example.taskservice.model.BoardMember;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
