@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Transactional
 public interface TaskListRepository extends JpaRepository<TaskList, Long> {
+
+    TaskList findAllById(Long id);
 }

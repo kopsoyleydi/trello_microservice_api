@@ -1,10 +1,9 @@
-package com.example.taskservice.dto.mapper;
+package com.example.taskservice.dto.mapperDto;
 
 
 import com.example.taskservice.dto.CardAttachmentDto;
 import com.example.taskservice.dto.CardLabelDto;
 import com.example.taskservice.model.CardAttachment;
-import com.example.taskservice.model.CardLabel;
 import org.mapstruct.Mapper;
 
 import java.util.List;

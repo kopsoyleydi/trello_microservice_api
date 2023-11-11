@@ -36,4 +36,9 @@ public class BoardRepoInterImpl implements BoardRepoInter {
     public void deleteTasksListFromBoard(Board board) {
         boardRepository.save(board);
     }
+
+    @Override
+    public Board getBoardById(Long id) {
+        return boardRepository.findAllById(id);
+    }
 }

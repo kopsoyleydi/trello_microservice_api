@@ -1,4 +1,4 @@
-package com.example.taskservice.dto.mapper;
+package com.example.taskservice.dto.mapperDto;
 
 
 import com.example.taskservice.dto.BoardMemberDto;

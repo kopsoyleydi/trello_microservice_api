@@ -25,4 +25,9 @@ public class TaskListRepoInterImpl implements TaskListRepoInter {
     public TaskList changeTasksList(TaskList taskList) {
         return taskListRepository.save(taskList);
     }
+
+    @Override
+    public TaskList getTaskListById(Long taskListId) {
+        return taskListRepository.findAllById(taskListId);
+    }
 }

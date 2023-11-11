@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Transactional
 public interface BoardRepository extends JpaRepository<Board, Long> {
+    Board findAllById(Long id);
 }
