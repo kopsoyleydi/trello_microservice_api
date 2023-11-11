@@ -1,5 +1,6 @@
 package com.example.taskservice.service.boardservice.impl;
 
+import com.example.taskservice.bodies.AddBoard;
 import com.example.taskservice.data.repoInter.BoardRepoInter;
 import com.example.taskservice.dto.BoardDto;
 import com.example.taskservice.dto.TaskListDto;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +25,11 @@ public class BoardService implements BoardServiceInter {
     private final TaskListMapper taskListMapper;
 
     @Override
-    public BoardDto addBoard(BoardDto boardDto) {
-        boardDto.setCreated_at(Instant.now());
+    public BoardDto addBoard(AddBoard addBoard) {
+        BoardDto boardDto = BoardDto.builder()
+                .name(addBoard.getName()).created_at(Instant.now())
+                .lists(List.of(TaskListDto.builder().created_at(Instant.now()).build()))
+                .build();
         return boardMapper
                 .toDto(boardRepoInter
                         .addBoard(boardMapper.toModel(boardDto)));

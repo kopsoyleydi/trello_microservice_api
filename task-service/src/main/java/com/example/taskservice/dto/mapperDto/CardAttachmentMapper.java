@@ -15,7 +15,7 @@ public interface CardAttachmentMapper {
 
     CardAttachment toModel(CardAttachmentDto cardAttachmentDto);
 
-    List<CardLabelDto> toDtoList(List<CardAttachment> list);
+    List<CardAttachmentDto> toDtoList(List<CardAttachment> list);
 
     List<CardAttachment> toModelList(List<CardAttachmentDto> list);
 }

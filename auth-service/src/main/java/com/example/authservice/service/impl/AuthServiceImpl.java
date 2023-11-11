@@ -50,6 +50,7 @@ public class AuthServiceImpl implements AuthService {
                 .bodyToMono(CommonResponse.class)
                 .block();
 
+        assert response != null;
         UserAuthInfo userAuthInfo = new ObjectMapper().convertValue(response.getData(), UserAuthInfo.class);
 
         if (userAuthInfo == null || !passwordEncoder.matches(authRequest.getPassword(), userAuthInfo.getPassword())) {

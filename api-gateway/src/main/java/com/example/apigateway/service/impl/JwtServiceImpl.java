@@ -21,7 +21,14 @@ public class JwtServiceImpl implements JwtService {
     private String SECRET_KEY;
 
     public String extractEmail(String jwt) {
-        return extractClaim(jwt, Claims::getSubject);
+        String username;
+        try {
+            final Claims claims = this.extractAllClaims(jwt);
+            username = claims.getSubject();
+        } catch (Exception e) {
+            username = null;
+        }
+        return username;
     }
 
     @Override
@@ -29,8 +36,8 @@ public class JwtServiceImpl implements JwtService {
         final String email = extractEmail(jwt);
         final String role = extractRole(jwt);
 
-        return email.equals(extractEmail(comparedJwtInRedis))
-                && role.equals(extractRole(comparedJwtInRedis))
+        return email.equals(extractEmail(jwt))
+                && role.equals(extractRole(jwt))
                 && !isTokenExpired(jwt);
     }
 
@@ -45,12 +52,16 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private Claims extractAllClaims(String jwt) {
-        return Jwts
-                .parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(jwt)
-                .getBody();
+        Claims claims;
+        try {
+            claims = Jwts.parser()
+                    .setSigningKey(SECRET_KEY)
+                    .parseClaimsJws(jwt)
+                    .getBody();
+        } catch (Exception e) {
+            claims = null;
+        }
+        return claims;
     }
 
     private SecretKey getSigningKey() {

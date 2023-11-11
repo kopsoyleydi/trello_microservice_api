@@ -1,10 +1,12 @@
 package com.example.taskservice.bodies;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
-@Builder
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class AddBoard {
-    String name;
+    private String name;
 }

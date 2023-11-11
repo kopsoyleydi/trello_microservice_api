@@ -37,7 +37,7 @@ public class JwtAuthFilter implements WebFilter {
             if (comparedJwtInRedis != null) {
                 if (jwtService.validateToken(jwt, comparedJwtInRedis)) {
                     String email = jwtService.extractEmail(jwt);
-                    List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("ROLE_" + jwtService.extractRole(jwt)));
+                    List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("role" + jwtService.extractRole(jwt)));
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                             email, null, authorities
                     );

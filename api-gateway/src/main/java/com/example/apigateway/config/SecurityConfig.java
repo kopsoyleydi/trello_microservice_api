@@ -27,8 +27,8 @@ public class SecurityConfig {
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec
                         .pathMatchers( "/eureka/**","/api/auth/**").permitAll()
-                        .pathMatchers("/api/tasks/**").hasRole("USER")
-                        .pathMatchers("/api/users/**").hasRole("USER")
+                        .pathMatchers("/api/tasks/**").permitAll()
+                        .pathMatchers("/api/users/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .addFilterAt(jwtAuthenticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)

@@ -12,7 +12,7 @@ public interface CommentMapper {
 
     CommentDto toDto(Comment comment);
 
-    Comment toModel(Comment comment);
+    Comment toModel(CommentDto comment);
 
     List<CommentDto> toDtoList(List<Comment> list);
 

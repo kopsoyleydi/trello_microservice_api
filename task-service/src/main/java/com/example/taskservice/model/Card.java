@@ -23,7 +23,7 @@ public class Card {
     private Long id;
 
     @OneToOne
-    @Column(name = "list_id")
+    @JoinColumn(name = "list_id")
     private TaskList taskList;
 
     @Column(name = "name")
