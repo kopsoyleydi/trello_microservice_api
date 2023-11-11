@@ -1,10 +1,11 @@
 package com.example.taskservice.dto;
 
-import com.example.taskservice.model.*;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,12 +15,13 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CardDto {
 
     private Long id;
 
     @OneToOne
-    private TaskList taskList;
+    private TaskListDto taskList;
 
     private String name;
 
@@ -40,5 +42,5 @@ public class CardDto {
     private List<CommentDto> comments;
 
     @OneToMany(mappedBy = "card", cascade = CascadeType.ALL)
-    private List<ActivityLog> activityLogs;
+    private List<ActivityLogDto> activityLogs;
 }

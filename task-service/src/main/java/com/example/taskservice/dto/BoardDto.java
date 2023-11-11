@@ -1,10 +1,10 @@
 package com.example.taskservice.dto;
 
-import com.example.taskservice.model.TaskList;
+
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class BoardDto {
 
     private Long id;
@@ -23,5 +24,5 @@ public class BoardDto {
     private Instant created_at;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<TaskList> lists;
+    private List<TaskListDto> lists;
 }
