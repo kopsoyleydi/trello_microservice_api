@@ -1,10 +1,7 @@
 package com.example.taskservice.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
 import java.util.List;
@@ -13,8 +10,8 @@ import java.util.List;
 @Table(name = "board")
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Data
+@Getter
+@Setter
 public class Board {
 
     @Id

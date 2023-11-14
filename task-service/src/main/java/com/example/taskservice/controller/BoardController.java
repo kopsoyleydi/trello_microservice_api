@@ -16,14 +16,14 @@ public class BoardController {
 
     private final BoardServiceInter boardServiceInter;
 
-
     @PostMapping(value = "/addBoard")
     public CommonResponse addBoardService(@RequestBody AddBoard addBoard){
+        CommonResponse response = new CommonResponse();
         BoardDto boardDto = boardServiceInter.addBoard(addBoard);
-        return CommonResponse.builder()
-                .message("Board added success")
-                .data(boardDto)
-                .status(HttpStatus.CREATED)
-                .build();
+        response.setMessage("Board added success");
+        response.setData(boardDto);
+        response.setStatus(HttpStatus.CREATED);
+        return response;
     }
+
 }

@@ -26,13 +26,10 @@ public class BoardService implements BoardServiceInter {
 
     @Override
     public BoardDto addBoard(AddBoard addBoard) {
-        BoardDto boardDto = BoardDto.builder()
-                .name(addBoard.getName()).created_at(Instant.now())
-                .lists(List.of(TaskListDto.builder().created_at(Instant.now()).build()))
-                .build();
-        return boardMapper
-                .toDto(boardRepoInter
-                        .addBoard(boardMapper.toModel(boardDto)));
+        Board board = new Board();
+        board.setCreated_at(Instant.now());
+        board.setName(addBoard.getName());
+        return boardMapper.toDto(boardRepoInter.addBoard(board));
     }
 
     @Override
@@ -45,7 +42,7 @@ public class BoardService implements BoardServiceInter {
     @Override
     public BoardDto addTasksListToBoard(Long boardId, TaskListDto taskListDto) {
         Board board = boardRepoInter.getBoardById(boardId);
-        board.getLists().add(taskListMapper.toModel(taskListDto));
+        //board.getLists().add(taskListMapper.toModel(taskListDto));
         return boardMapper
                 .toDto(boardRepoInter
                         .addTasksListToBoard(board));
@@ -54,7 +51,7 @@ public class BoardService implements BoardServiceInter {
     @Override
     public void deleteTasksListFromBoard(Long boardId, Long taskListId) {
         Board board = boardRepoInter.getBoardById(boardId);
-        board.getLists().remove(taskListId.intValue());
+        //board.getLists().remove(taskListId.intValue());
         boardRepoInter.deleteTasksListFromBoard(board);
     }
 

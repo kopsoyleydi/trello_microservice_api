@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class BoardRepoInterImpl implements BoardRepoInter {
 
+
     private final BoardRepository boardRepository;
 
     @Override
