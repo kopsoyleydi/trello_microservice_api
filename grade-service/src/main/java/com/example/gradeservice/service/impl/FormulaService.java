@@ -1,4 +1,4 @@
-package com.example.gradeservice.service;
+package com.example.gradeservice.service.impl;
 
 
 import lombok.RequiredArgsConstructor;
@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MathService {
+public class FormulaService {
 }
