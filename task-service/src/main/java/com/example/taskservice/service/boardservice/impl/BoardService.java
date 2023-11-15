@@ -1,6 +1,7 @@
 package com.example.taskservice.service.boardservice.impl;
 
 import com.example.taskservice.bodies.AddBoard;
+import com.example.taskservice.bodies.ChangeBoard;
 import com.example.taskservice.data.repoInter.BoardRepoInter;
 import com.example.taskservice.dto.BoardDto;
 import com.example.taskservice.dto.TaskListDto;
@@ -33,7 +34,8 @@ public class BoardService implements BoardServiceInter {
     }
 
     @Override
-    public BoardDto changeBoard(BoardDto boardDto) {
+    public BoardDto changeBoard(ChangeBoard changeBoard) {
+        BoardDto boardDto = new BoardDto();
         return boardMapper
                 .toDto(boardRepoInter
                         .changeBoard(boardMapper.toModel(boardDto)));

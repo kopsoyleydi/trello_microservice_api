@@ -1,6 +1,7 @@
 package com.example.taskservice.controller;
 
 import com.example.taskservice.bodies.AddBoard;
+import com.example.taskservice.bodies.ChangeBoard;
 import com.example.taskservice.dto.BoardDto;
 import com.example.taskservice.dto.response.CommonResponse;
 import com.example.taskservice.service.boardservice.BoardServiceInter;
@@ -24,6 +25,16 @@ public class BoardController {
         response.setData(boardDto);
         response.setStatus(HttpStatus.CREATED);
         return response;
+    }
+
+    @PutMapping(value = "/changeBoard")
+    public CommonResponse changeBoardEndPoint(@RequestBody ChangeBoard changeBoard){
+        CommonResponse response = new CommonResponse();
+        BoardDto boardDto = boardServiceInter.changeBoard(changeBoard);
+        response.setMessage("Board change success");
+        response.setData(boardDto);
+        response.setStatus(HttpStatus.ACCEPTED);
+        return  response;
     }
 
 }
