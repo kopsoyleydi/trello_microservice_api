@@ -32,10 +32,10 @@ public class JwtAuthFilter implements WebFilter {
         String path = exchange.getRequest().getPath().toString();
         log.info("Path: " + path);
         if (jwt != null) {
-            String comparedJwtInRedis = jwtService.extractEmail(jwt);
+            String comparedJwt = jwtService.extractEmail(jwt);
 
-            if (comparedJwtInRedis != null) {
-                if (jwtService.validateToken(jwt, comparedJwtInRedis)) {
+            if (comparedJwt != null) {
+                if (jwtService.validateToken(jwt, comparedJwt)) {
                     String email = jwtService.extractEmail(jwt);
                     List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority("role" + jwtService.extractRole(jwt)));
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
