@@ -22,9 +22,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
+
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class GoogleSheetsConfig {
     private static final List<String> SCOPES =
             Collections.singletonList(SheetsScopes.SPREADSHEETS_READONLY);
 
-    private static final String CREDENTIALS_FILE_PATH = "/resources/credentials/credentials.json";
+    private static final String CREDENTIALS_FILE_PATH = "/credentials/credentials.json";
 
     private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
             throws IOException {
