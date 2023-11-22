@@ -2,6 +2,7 @@ package com.example.gradeservice.controller;
 
 
 import com.example.gradeservice.config.GoogleSheetsConfig;
+import com.example.gradeservice.service.GetSheetServiceInter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +17,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FormulaController {
 
-    private final GoogleSheetsConfig googleSheetsConfig;
+    private final GetSheetServiceInter getSheetServiceInter;
 
 
     @GetMapping("/getSheetsInfo")
     private List<Object> getInfoFromSheet() throws GeneralSecurityException, IOException {
-        return googleSheetsConfig.getInfoFromSheet();
+        return getSheetServiceInter.getSheetFromGoogle();
     }
 }

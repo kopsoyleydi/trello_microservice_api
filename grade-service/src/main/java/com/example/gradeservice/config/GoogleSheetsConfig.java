@@ -59,29 +59,8 @@ public class GoogleSheetsConfig {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-    public static List<Object> mainInfo() throws IOException, GeneralSecurityException {
-        // Build a new authorized API client service.
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms";
-        final String range = "Class Data!A2:E";
-        Sheets service =
-                new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                        .setApplicationName(APPLICATION_NAME)
-                        .build();
-        ValueRange response = service.spreadsheets().values()
-                .get(spreadsheetId, range)
-                .execute();
-        List<List<Object>> values = response.getValues();
-        if (values == null || values.isEmpty()) {
-            System.out.println("No data found.");
-        } else {
-            System.out.println("Name, Major");
-            return Collections.singletonList(values);
-        }
-        return null;
+    public Credential getToServicesMethod(NetHttpTransport HTTP_TRANSPORT) throws IOException {
+        return getCredentials(HTTP_TRANSPORT);
     }
 
-    public List<Object> getInfoFromSheet() throws GeneralSecurityException, IOException {
-        return mainInfo();
-    }
 }
