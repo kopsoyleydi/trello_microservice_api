@@ -1,4 +1,4 @@
-package com.example.gradeservice.service.services;
+package com.example.gradeservice.service.endpoint;
 
 import com.example.gradeservice.config.GoogleSheetsConfig;
 import com.example.gradeservice.service.services.inter.GetSheetServiceInter;
