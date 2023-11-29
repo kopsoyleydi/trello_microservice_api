@@ -1,7 +1,7 @@
-package com.example.gradeservice.service.impl;
+package com.example.gradeservice.service.services;
 
 import com.example.gradeservice.config.GoogleSheetsConfig;
-import com.example.gradeservice.service.GetSheetServiceInter;
+import com.example.gradeservice.service.services.inter.GetSheetServiceInter;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;

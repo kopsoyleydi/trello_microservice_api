@@ -1,16 +1,13 @@
-package com.example.authservice.dto;
+package com.example.gradeservice.dto;
 
 import lombok.*;
 
-
-import java.util.List;
-
-@Builder
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserAuthInfo {
+@AllArgsConstructor
+@Builder
+public class UserGetDto {
     public Long id;
 
     public String email;

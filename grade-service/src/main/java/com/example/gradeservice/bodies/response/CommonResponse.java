@@ -1,4 +1,4 @@
-package com.example.authservice.response;
+package com.example.gradeservice.bodies.response;
 
 import lombok.*;
 import org.springframework.http.HttpStatus;

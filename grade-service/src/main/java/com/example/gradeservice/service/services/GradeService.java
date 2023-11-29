@@ -1,4 +1,4 @@
-package com.example.gradeservice.service.impl;
+package com.example.gradeservice.service.services;
 
 
 import lombok.RequiredArgsConstructor;
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class FormulaService {
+public class GradeService {
 }

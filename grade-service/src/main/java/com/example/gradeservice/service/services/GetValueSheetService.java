@@ -1,6 +1,6 @@
-package com.example.gradeservice.service.impl;
+package com.example.gradeservice.service.services;
 
-
+import com.example.gradeservice.config.GoogleSheetsConfig;
 import com.google.api.client.googleapis.json.GoogleJsonError;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.googleapis.testing.auth.oauth2.MockGoogleCredential;
@@ -8,30 +8,26 @@ import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
-import com.google.api.services.sheets.v4.model.AppendValuesResponse;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 @Slf4j
-public class AppendValues {
+public class GetValueSheetService {
 
-    public static AppendValuesResponse appendValues(String spreadsheetId,
-                                                    String range,
-                                                    String valueInputOption,
-                                                    List<List<Object>> values)
-            throws IOException {
+    private final GoogleSheetsConfig googleSheetsConfig;
+    public static ValueRange getValues(String spreadsheetId, String range) throws IOException {
         /* Load pre-authorized user credentials from the environment.
            TODO(developer) - See https://developers.google.com/identity for
             guides on implementing OAuth2 for your application. */
         MockGoogleCredential credentials = (MockGoogleCredential) MockGoogleCredential.getApplicationDefault()
                 .createScoped(Collections.singleton(SheetsScopes.SPREADSHEETS));
-
 
         // Create the sheets API client
         Sheets service = new Sheets.Builder(new NetHttpTransport(),
@@ -40,16 +36,12 @@ public class AppendValues {
                 .setApplicationName("Sheets samples")
                 .build();
 
-        AppendValuesResponse result = null;
+        ValueRange result = null;
         try {
-            // Append values to the specified range.
-            ValueRange body = new ValueRange()
-                    .setValues(values);
-            result = service.spreadsheets().values().append(spreadsheetId, range, body)
-                    .setValueInputOption(valueInputOption)
-                    .execute();
-            // Prints the spreadsheet with appended values.
-            System.out.printf("%d cells appended.", result.getUpdates().getUpdatedCells());
+            // Gets the values of the cells in the specified range.
+            result = service.spreadsheets().values().get(spreadsheetId, range).execute();
+            int numRows = result.getValues() != null ? result.getValues().size() : 0;
+            System.out.printf("%d rows retrieved.", numRows);
         } catch (GoogleJsonResponseException e) {
             // TODO(developer) - handle error appropriately
             GoogleJsonError error = e.getDetails();

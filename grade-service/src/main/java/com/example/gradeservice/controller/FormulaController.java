@@ -1,8 +1,7 @@
 package com.example.gradeservice.controller;
 
 
-import com.example.gradeservice.config.GoogleSheetsConfig;
-import com.example.gradeservice.service.GetSheetServiceInter;
+import com.example.gradeservice.service.services.inter.GetSheetServiceInter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
