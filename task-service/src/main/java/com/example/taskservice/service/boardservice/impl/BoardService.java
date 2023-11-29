@@ -44,7 +44,6 @@ public class BoardService implements BoardServiceInter {
     @Override
     public BoardDto addTasksListToBoard(Long boardId, TaskListDto taskListDto) {
         Board board = boardRepoInter.getBoardById(boardId);
-        //board.getLists().add(taskListMapper.toModel(taskListDto));
         return boardMapper
                 .toDto(boardRepoInter
                         .addTasksListToBoard(board));
@@ -53,7 +52,6 @@ public class BoardService implements BoardServiceInter {
     @Override
     public void deleteTasksListFromBoard(Long boardId, Long taskListId) {
         Board board = boardRepoInter.getBoardById(boardId);
-        //board.getLists().remove(taskListId.intValue());
         boardRepoInter.deleteTasksListFromBoard(board);
     }
 
