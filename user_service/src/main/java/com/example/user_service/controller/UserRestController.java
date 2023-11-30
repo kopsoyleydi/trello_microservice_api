@@ -30,12 +30,12 @@ public class UserRestController {
         }
     }
 
-    @GetMapping (value = "/getCurrentUser")
-    ResponseEntity<?> getCurrentUser(@RequestBody ProfileBody profileBody){
+    @PostMapping (value = "/getUserById/{id}")
+    ResponseEntity<?> getCurrentUser(@PathVariable Long id){
         try {
             return ResponseEntity
                     .ok()
-                    .body(userRestService.getUserById(profileBody.getId()));
+                    .body(userRestService.getUserById(id));
         }
         catch (Exception e){
             return ResponseEntity.internalServerError().body("Something went wrong");
@@ -78,5 +78,6 @@ public class UserRestController {
             return ResponseEntity.internalServerError().body("Something went wrong");
         }
     }
+
 
 }
