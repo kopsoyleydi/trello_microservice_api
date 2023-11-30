@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/api/grade")
 @RequiredArgsConstructor
-public class FormulaController {
+public class TestController {
 
     private final GetSheetServiceInter getSheetServiceInter;
 
