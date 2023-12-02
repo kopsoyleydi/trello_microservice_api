@@ -1,5 +1,6 @@
 package com.example.taskservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +16,8 @@ public class TaskListDto {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "board_id")
+    @JsonBackReference
     private BoardDto board;
 
     private String name;

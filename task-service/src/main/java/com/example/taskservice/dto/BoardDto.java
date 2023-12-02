@@ -1,6 +1,7 @@
 package com.example.taskservice.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
 import lombok.*;
@@ -20,6 +21,4 @@ public class BoardDto {
 
     private Instant created_at;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<TaskListDto> lists;
 }

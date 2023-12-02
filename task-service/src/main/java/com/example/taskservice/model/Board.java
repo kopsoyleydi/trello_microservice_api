@@ -25,8 +25,5 @@ public class Board {
     @Column(name = "created_at")
     private Instant created_at;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<TaskList> lists;
-
 
 }

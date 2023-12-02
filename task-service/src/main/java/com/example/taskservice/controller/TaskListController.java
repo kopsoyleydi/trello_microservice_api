@@ -1,8 +1,8 @@
 package com.example.taskservice.controller;
 
 import com.example.taskservice.dto.response.CommonResponse;
-import com.example.taskservice.dto.response.TaskBody;
-import com.example.taskservice.service.taskservice.TaskServiceInter;
+import com.example.taskservice.bodies.TaskBody;
+import com.example.taskservice.service.second.taskservice.TaskServiceInter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/users/api/taskList")
+@RequestMapping(value = "/api/tasks/taskList")
 @RequiredArgsConstructor
 public class TaskListController {
 
