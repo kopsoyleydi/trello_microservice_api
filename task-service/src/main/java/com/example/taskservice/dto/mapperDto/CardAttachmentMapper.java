@@ -1,8 +1,7 @@
 package com.example.taskservice.dto.mapperDto;
 
 
-import com.example.taskservice.dto.CardAttachmentDto;
-import com.example.taskservice.dto.CardLabelDto;
+import com.example.taskservice.dto.dtos.CardAttachmentDto;
 import com.example.taskservice.model.CardAttachment;
 import org.mapstruct.Mapper;
 

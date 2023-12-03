@@ -1,4 +1,4 @@
-package com.example.taskservice.dto;
+package com.example.taskservice.dto.dtos;
 
 
 import jakarta.persistence.ManyToMany;

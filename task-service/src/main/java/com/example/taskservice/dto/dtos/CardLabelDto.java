@@ -1,19 +1,18 @@
-package com.example.taskservice.dto;
+package com.example.taskservice.dto.dtos;
 
-
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CardAttachmentDto {
+public class CardLabelDto {
 
     private Long id;
 
     @ManyToOne
     private CardDto card;
 
-    private String awsLink;
+    private String color;
 }

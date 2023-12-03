@@ -2,8 +2,8 @@ package com.example.taskservice.service.second.boardservice;
 
 import com.example.taskservice.bodies.AddBoard;
 import com.example.taskservice.bodies.ChangeBoard;
-import com.example.taskservice.dto.BoardDto;
-import com.example.taskservice.dto.TaskListDto;
+import com.example.taskservice.dto.dtos.BoardDto;
+import com.example.taskservice.dto.dtos.TaskListDto;
 
 public interface BoardServiceInter {
 

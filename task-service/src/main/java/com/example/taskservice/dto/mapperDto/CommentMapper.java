@@ -1,7 +1,7 @@
 package com.example.taskservice.dto.mapperDto;
 
 
-import com.example.taskservice.dto.CommentDto;
+import com.example.taskservice.dto.dtos.CommentDto;
 import com.example.taskservice.model.Comment;
 import org.mapstruct.Mapper;
 

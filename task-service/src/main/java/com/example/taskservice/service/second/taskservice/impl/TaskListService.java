@@ -2,8 +2,8 @@ package com.example.taskservice.service.second.taskservice.impl;
 
 import com.example.taskservice.data.repoInter.BoardRepoInter;
 import com.example.taskservice.data.repoInter.TaskListRepoInter;
-import com.example.taskservice.dto.BoardDto;
-import com.example.taskservice.dto.TaskListDto;
+import com.example.taskservice.dto.dtos.BoardDto;
+import com.example.taskservice.dto.dtos.TaskListDto;
 
 import com.example.taskservice.bodies.TaskBody;
 import com.example.taskservice.model.Board;

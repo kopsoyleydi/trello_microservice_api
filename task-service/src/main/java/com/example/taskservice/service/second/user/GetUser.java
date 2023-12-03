@@ -1,7 +1,7 @@
 package com.example.taskservice.service.second.user;
 
 
-import com.example.taskservice.dto.UserDto;
+import com.example.taskservice.dto.dtos.UserDto;
 import com.example.taskservice.dto.response.CommonResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

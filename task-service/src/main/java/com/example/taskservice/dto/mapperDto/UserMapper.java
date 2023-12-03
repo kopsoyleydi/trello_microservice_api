@@ -1,7 +1,7 @@
 package com.example.taskservice.dto.mapperDto;
 
 
-import com.example.taskservice.dto.UserDto;
+import com.example.taskservice.dto.dtos.UserDto;
 import com.example.taskservice.model.User;
 import org.mapstruct.Mapper;
 

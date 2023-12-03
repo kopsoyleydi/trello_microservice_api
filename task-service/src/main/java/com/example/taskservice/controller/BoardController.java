@@ -2,7 +2,6 @@ package com.example.taskservice.controller;
 
 import com.example.taskservice.bodies.AddBoard;
 import com.example.taskservice.bodies.ChangeBoard;
-import com.example.taskservice.dto.BoardDto;
 import com.example.taskservice.dto.response.CommonResponse;
 import com.example.taskservice.service.second.boardservice.BoardServiceInter;
 import lombok.RequiredArgsConstructor;

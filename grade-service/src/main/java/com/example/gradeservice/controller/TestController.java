@@ -2,6 +2,7 @@ package com.example.gradeservice.controller;
 
 
 import com.example.gradeservice.bodies.response.CommonResponse;
+import com.example.gradeservice.config.GoogleSheetsConfig;
 import com.example.gradeservice.dto.GoogleSheetsDTO;
 import com.example.gradeservice.service.services.CreateSheetService;
 import com.example.gradeservice.service.services.inter.GetSheetServiceInter;
@@ -20,6 +21,8 @@ public class TestController {
 
     private final GetSheetServiceInter getSheetServiceInter;
 
+    private final GoogleSheetsConfig googleSheetsConfig;
+
     private final CreateSheetService createSheetService;
 
 
@@ -32,7 +35,7 @@ public class TestController {
     private CommonResponse addSheets(@RequestBody GoogleSheetsDTO googleSheetsDTO) throws GeneralSecurityException, IOException{
         try {
             return CommonResponse.builder()
-                    .data(createSheetService.createGoogleSheet(googleSheetsDTO))
+                    .data(googleSheetsConfig.createGoogleSheet(googleSheetsDTO))
                     .message("Add Service")
                     .status(HttpStatus.CREATED).build();
         }

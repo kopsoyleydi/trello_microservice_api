@@ -1,6 +1,6 @@
 package com.example.taskservice.service.second.userservice.impl;
 
-import com.example.taskservice.dto.UserDto;
+import com.example.taskservice.dto.dtos.UserDto;
 import com.example.taskservice.localConnect.requestLocal.UserAuthInfo;
 import com.example.taskservice.localConnect.service.UserConnect;
 import com.example.taskservice.service.second.userservice.UserServiceInter;
